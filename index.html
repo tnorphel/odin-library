@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Odin-Library</title>
+        <link rel="stylesheet" href="./styles.css">
+        <script src="./script.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>My Library</h1>
+        </header>
+        <main>
+            <div class="bookshelve">
+                
+            </div>
+            <form action="">
+                <h2>Add book</h2>
+                <div class="form-field">
+                    <div class="about-book">
+                        <label for="title">Title<span>*</span></label><br>
+                        <input type="text" id="title" name="title" required>
+                    </div><br>
+                    <div class="about-book">
+                        <label for="author">Author<span>*</span></label><br>
+                        <input type="text" id="author" name="author" required>
+                    </div><br>
+                    <div class="about-book">
+                        <label for="pages">Number of pages<span>*</span></label><br>
+                        <input type="number" id="pages" name="pages" min="1" required>
+                    </div><br>
+                    <div class="read-status">
+                        <label for="readStatus">
+                            <input type="checkbox" id="readStatus" name="readStatus" checked>
+                            Read
+                        </label>
+                    </div><br>
+                    <button type="submit">Add</button>
+                </div>
+            </form>
+        </main>
+        <footer>
+            The Odin Project - Library
+        </footer>
+    </body>
+</html>
