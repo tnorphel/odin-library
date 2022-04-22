@@ -27,14 +27,14 @@ main {
 }
 
 /*******Bookshelve area*******/
-main .bookshelve h2 {
+main .bookshelf h2 {
     padding-left: 3rem;
 }
-main .bookshelve .books-container {
+main .bookshelf .books-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-main .bookshelve .books-container .card {
+main .bookshelf .books-container .card {
     background-color: #0f172a;
     margin: 1rem;
     padding: 1rem;
@@ -42,38 +42,40 @@ main .bookshelve .books-container .card {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
     text-align: center;
 }
-main .bookshelve .books-container .card table {
-    border-collapse: collapse;
-    letter-spacing: 1px;
+main .bookshelf .books-container .book-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.1rem;
     font-size: 1.2rem;
 }
-main .bookshelve .books-container .card table th,td {
+main .bookshelf .books-container .book-details p:first-child {
+    font-weight: bold;
     text-align: left;
-    padding: 5px 20px;
 }
-main .bookshelve .books-container .card table .read {
+main .bookshelf .books-container .book-details p:last-child {
+    text-align: left;
+}
+main .bookshelf .books-container .card .book-details .read {
     border: none;
     padding: 0;
     background-color: #0f172a;
     font-size: 1.2rem;
     color: rgb(153, 255, 0);
 }
-main .bookshelve .books-container .card table .not-read {
+main .bookshelf .books-container .card .book-details .not-read {
     border: none;
     padding: 0;
     background-color: #0f172a;
     font-size: 1.2rem;
     color: rgb(255, 0, 0);
 }
-main .bookshelve .books-container .card table .read:hover {
+main .bookshelf .books-container .card .book-details .read:hover {
     transform: scale(1.1);
-    border-radius: 10px;
 }
-main .bookshelve .books-container .card table .not-read:hover {
+main .bookshelf .books-container .card .book-details .not-read:hover {
     transform: scale(1.1);
-    border-radius: 10px;
 }
-main .bookshelve .books-container .card .remove {
+main .bookshelf .books-container .card .remove-book {
     padding: 0.5rem 1.5rem;
     border-radius: 15px;
     border: none;
@@ -82,7 +84,7 @@ main .bookshelve .books-container .card .remove {
     font-weight: bold;
     font-size: 1rem;
 }
-main .bookshelve .books-container .card .remove:hover {
+main .bookshelf .books-container .card .remove-book:hover {
     transform: scale(1.1);
 }
 
