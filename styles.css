@@ -1,35 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+/******************************************/
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    font-family: 'Rubik', sans-serif;
     display: grid;
     grid-template-rows: 120px 1fr 60px;
 }
+
+/******************************************/
 header {
-    background-color: lightblue;
+    background-color: #0f172a;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.5rem;
 }
+
+/******************************************/
 main {
-    background-color: white;
+    background-color: #1e293b;
+    color: #ffffff;
     display: grid;
     grid-template-columns: 3.5fr 1fr;
 }
-main .bookshelve {
-    background-color: lightgreen;
+
+/*******Bookshelve area*******/
+main .bookshelve h2 {
+    padding-left: 3rem;
 }
+main .bookshelve .books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+main .bookshelve .books-container .card {
+    background-color: #0f172a;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+main .bookshelve .books-container .card table {
+    border-collapse: collapse;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+}
+main .bookshelve .books-container .card table th,td {
+    text-align: left;
+    padding: 5px 20px;
+}
+main .bookshelve .books-container .card table .read {
+    border: none;
+    padding: 0;
+    background-color: #0f172a;
+    font-size: 1.2rem;
+    color: rgb(153, 255, 0);
+}
+main .bookshelve .books-container .card table .not-read {
+    border: none;
+    padding: 0;
+    background-color: #0f172a;
+    font-size: 1.2rem;
+    color: rgb(255, 0, 0);
+}
+main .bookshelve .books-container .card table .read:hover {
+    transform: scale(1.1);
+    border-radius: 10px;
+}
+main .bookshelve .books-container .card table .not-read:hover {
+    transform: scale(1.1);
+    border-radius: 10px;
+}
+main .bookshelve .books-container .card .remove {
+    padding: 0.5rem 1.5rem;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(255, 104, 127);
+    color: #fdfdfd;
+    font-weight: bold;
+    font-size: 1rem;
+}
+main .bookshelve .books-container .card .remove:hover {
+    transform: scale(1.1);
+}
+
+/*******Adding new book form area*******/
 main form h2 {
-    margin: 2rem;
+    margin: 1.5rem 2rem;
     text-align: center;
 }
 .form-field {
-    margin: 2rem 1rem;
+    background-color: #0f172a;
+    margin: 1.5rem 1rem;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
 }
 .form-field .about-book input {
     width: 90%;
-    height: 25px;
-    border: 0.1px solid rgb(196, 196, 196);
+    height: 27px;
+    border: none;
     border-radius: 10px;
 }
 .read-status label{
@@ -46,6 +118,7 @@ input[type="checkbox"] {
 }
 .form-field label {
     font-size: 1.2rem;
+    text-align: left;
 }
 .form-field label span {
     color: red;
@@ -55,11 +128,24 @@ input[type="checkbox"] {
     padding: 0.5rem 2.5rem;
     border-radius: 15px;
     border: none;
-    background-color: green;
+    background-color: rgb(19, 153, 124);
     color: white;
     font-weight: bold;
     font-size: 1rem;
 }
+
+/*****************************/
 footer {
-    background-color: lightpink;
+    background-color: #0f172a;
+    color: #ffffff;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+footer p:last-child{
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
