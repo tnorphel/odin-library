@@ -1,12 +1,5 @@
 let myLibrary = [];
 
-let book1 = new Book('The Hobbit', 'J.R.R. Tolkien', 765, true);
-let book2 = new Book('Game of Thrones', 'G.R.R. Martin', 1241, false);
-let book3 = new Book('Harry Potter and Sorcerers Stone', 'J.K. Rowling', 475, true);
-let book4 = new Book('Dune', 'Frank Herbert', 936, true);
-
-myLibrary.push(book1, book2, book3, book4);
-
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -17,8 +10,27 @@ function Book(title, author, pages, read) {
 let bookDetail = document.getElementById('book-detail');
 bookDetail.addEventListener('submit', addBookToLibrary);
 
-function addBookToLibrary() {
-    console.log(typeof bookDetail);
+function addBookToLibrary(e) {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const readStatus = document.getElementById('readStatus').checked;
+    
+    const book = new Book(title, author, Number(pages), readStatus);
+
+    // check if book is already in myLibrary array
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (book.title === myLibrary[i].title && book.author === myLibrary[i].author) {
+            alert('Book already present in your Library!');
+            return;
+        }
+    }
+
+    myLibrary.push(book);
+    resetBookshelf();
+    displayAllBooks();
 }
 
 function displayAllBooks() {
@@ -47,7 +59,7 @@ function displayAllBooks() {
 
         author.appendChild(author_p1);
         author.appendChild(author_p2);
-        card.appendChild(author)
+        card.appendChild(author);
 
         let pages = document.createElement('div')
         pages.className = 'book-details';
@@ -58,7 +70,7 @@ function displayAllBooks() {
 
         pages.appendChild(pages_p1);
         pages.appendChild(pages_p2);
-        card.appendChild(pages)
+        card.appendChild(pages);
 
         let read_status = document.createElement('div')
         read_status.className = 'book-details';
@@ -72,53 +84,59 @@ function displayAllBooks() {
             p2_btn.setAttribute('type', 'button');
             p2_btn.className = 'read';
             p2_btn.textContent = 'Read';
+            p2_btn.onclick = toggleReadStatus;
 
             read_status_p2.appendChild(p2_btn);
             read_status.appendChild(read_status_p1);
             read_status.appendChild(read_status_p2);
-            card.appendChild(read_status)
+            card.appendChild(read_status);
         } else {
             let p2_btn = document.createElement('button');
             p2_btn.setAttribute('type', 'button');
             p2_btn.className = 'not-read';
             p2_btn.textContent = 'Not-Read';
+            p2_btn.onclick = toggleReadStatus;
 
             read_status_p2.appendChild(p2_btn);
             read_status.appendChild(read_status_p1);
             read_status.appendChild(read_status_p2);
-            card.appendChild(read_status)
+            card.appendChild(read_status);
         }
 
         let remove = document.createElement('button');
         remove.setAttribute('type', 'button');
         remove.className = 'remove-book';
         remove.setAttribute('id', `index-${i}`);
-        remove.textContent = 'Remove'
+        remove.textContent = 'Remove';
+        remove.onclick = removeBookFromLibrary;
 
         card.appendChild(remove);
 
         booksContainer.appendChild(card);
     }
 }
-displayAllBooks();
 
 function resetBookshelf() {
     let bookshelf = document.querySelector('.books-container');
     bookshelf.innerHTML = "";
 }
 
-let removeButtons = document.querySelectorAll('.remove-book');
-removeButtons.forEach((removeBtn) => {
-    removeBtn.addEventListener('click', removeBookFromLibrary);
-});
-
 function removeBookFromLibrary(e) {
     let idOfBookToBeRemoved = e.target.id;
     let indexOfBookToBeRemoved = idOfBookToBeRemoved[idOfBookToBeRemoved.length - 1];
-    console.log(indexOfBookToBeRemoved);
-    console.log(myLibrary);
     myLibrary.splice(indexOfBookToBeRemoved, 1);
-    console.log(myLibrary);
     resetBookshelf();
     displayAllBooks();
+}
+
+function toggleReadStatus(e) {
+    if (e.target.textContent === 'Read') {
+        e.target.classList.remove('read');
+        e.target.classList.add('not-read');
+        e.target.textContent = 'Not-Read';
+    } else {
+        e.target.classList.remove('not-read');
+        e.target.classList.add('read');
+        e.target.textContent = 'Read';
+    }
 }
