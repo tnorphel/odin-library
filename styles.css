@@ -135,6 +135,11 @@ input[type="checkbox"] {
     font-weight: bold;
     font-size: 1rem;
 }
+.form-field .form-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2rem;
+}
 
 /*****************************/
 footer {
